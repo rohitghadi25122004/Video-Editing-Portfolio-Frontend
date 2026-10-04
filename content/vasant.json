@@ -1,0 +1,142 @@
+{
+  "profile": {
+    "name": "Vasant Gawade",
+    "role": "Video Editor",
+    "country": "India",
+    "language": "English",
+    "availableForWork": true,
+    "bio": "I'm a passionate and detail-oriented video editor with experience in short-form content, 3D-style edits, YouTube videos, and Instagram Reels. I blend creativity with technical skill to craft engaging visuals that tell powerful stories and captivate audiences.",
+    "photo": "/media/profile.webp",
+    "software": [
+      "Adobe After Effects",
+      "Adobe Premiere Pro",
+      "Blender"
+    ],
+    "aiTools": [
+      "Kling AI",
+      "Google Veo"
+    ],
+    "contact": {
+      "email": "vasantgawade253@gmail.com",
+      "instagram": {
+        "handle": "@_spring_edition_",
+        "url": "https://www.instagram.com/_spring_edition_/"
+      },
+      "discord": "videoeditorspring",
+      "malloy": "https://portfolio.malloy.sg/vasantgawade"
+    }
+  },
+  "items": [
+    {
+      "id": "01",
+      "malloyId": "5e4f903f-a2de-44ff-923d-58119c20fa36",
+      "format": "long-form",
+      "aspect": "16:9",
+      "label": "Long-form edit",
+      "description": null,
+      "categories": [],
+      "language": null,
+      "tools": [
+        "Adobe Premiere Pro"
+      ],
+      "source": {
+        "type": "drive",
+        "embedUrl": "https://drive.google.com/file/d/1MwjyVvgUKIfT-9EWfl1lez9h3ZmsgEJ6/preview"
+      },
+      "cover": "/media/cover-01.webp",
+      "coverSize": {
+        "width": 1280,
+        "height": 769
+      },
+      "durationSeconds": null,
+      "captionsVtt": null,
+      "approved": false
+    },
+    {
+      "id": "02",
+      "malloyId": "4a872eb0-4379-4cec-9de6-34c2ef34ec5f",
+      "format": "short",
+      "aspect": "9:16",
+      "label": "Explanation Reel",
+      "description": "Explanation Reel",
+      "categories": [],
+      "language": "Hindi",
+      "tools": [
+        "Adobe Premiere Pro",
+        "Adobe After Effects"
+      ],
+      "source": {
+        "type": "mp4",
+        "src": "/media/reel-02.mp4"
+      },
+      "cover": "/media/cover-02.webp",
+      "coverSize": {
+        "width": 720,
+        "height": 1280
+      },
+      "durationSeconds": 15.6,
+      "captionsVtt": null,
+      "approved": false
+    },
+    {
+      "id": "03",
+      "malloyId": "d5b186c2-06ce-446e-9de3-6c0559cd4b43",
+      "format": "short",
+      "aspect": "9:16",
+      "label": "Clean & Professional Explainer",
+      "description": null,
+      "categories": [
+        "Clean & Professional",
+        "Explainer"
+      ],
+      "language": "Hindi",
+      "tools": [
+        "Adobe Premiere Pro",
+        "Adobe After Effects"
+      ],
+      "source": {
+        "type": "drive",
+        "embedUrl": "https://drive.google.com/file/d/110SBuZA_FihwcBUs-kBvRQAVEQHvkRQI/preview"
+      },
+      "cover": "/media/cover-03.webp",
+      "coverSize": {
+        "width": 720,
+        "height": 1280
+      },
+      "durationSeconds": null,
+      "captionsVtt": null,
+      "approved": false
+    },
+    {
+      "id": "04",
+      "malloyId": "a4b97d37-30b9-4136-a983-04de4f588d6a",
+      "format": "short",
+      "aspect": "9:16",
+      "label": "Motion Graphics with Informative Video",
+      "description": "Motion Graphics with Informative Video",
+      "categories": [
+        "Explainer",
+        "2D Animation / Motion Graphics",
+        "Health & Fitness"
+      ],
+      "language": "English",
+      "tools": [
+        "Adobe Premiere Pro",
+        "Adobe After Effects"
+      ],
+      "source": {
+        "type": "mp4",
+        "src": "/media/reel-04.mp4",
+        "loopSrc": "/media/reel-04-loop.mp4"
+      },
+      "cover": "/media/cover-04.webp",
+      "coverSize": {
+        "width": 720,
+        "height": 1280
+      },
+      "durationSeconds": 15.5,
+      "captionsVtt": null,
+      "approved": true
+    }
+  ]
+}

@@ -1,0 +1,313 @@
+@import "tailwindcss";
+
+/* Dark variant follows the data-theme attribute set on <html> (see layout.tsx). */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* ------------------------------------------------------------------
+   Poster Cut tokens (DESIGN.md). Light is the default expression.
+   ------------------------------------------------------------------ */
+:root {
+  --bg: #f4f4f1;          /* Cool Paper */
+  --surface: #fbfbf9;     /* Lifted Paper */
+  --text: #15161a;        /* Ink */
+  --muted: #55575e;       /* Graphite, 6.4:1 on bg */
+  --line: #d9dad4;        /* Hairline */
+  --line-strong: #85877f; /* 3.4:1 for control borders */
+  --field: #d4dd3f;       /* Portrait Chartreuse */
+  --field-ink: #15161a;
+  --btn: #15161a;
+  --btn-text: #f4f4f1;
+  --player-bg: #15161a;
+  --media-shadow: 0 30px 60px -20px rgb(60 66 10 / 0.22);
+  --focus: #15161a;
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --bg: #121316;          /* Night Ink */
+  --surface: #1b1d21;     /* Raised Ink */
+  --text: #efefea;        /* Chalk */
+  --muted: #a7a9a3;       /* Fog, 7.8:1 on bg */
+  --line: #2d2f34;        /* Seam */
+  --line-strong: #6c6f75;
+  --field: #b9c136; /* toned down so fields do not outshine covers in dark */
+  --field-ink: #121316;
+  --btn: #efefea;
+  --btn-text: #121316;
+  --player-bg: #15161a;
+  --media-shadow: 0 30px 60px -20px rgb(0 0 0 / 0.45);
+  --focus: #d4dd3f;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-field: var(--field);
+  --color-field-ink: var(--field-ink);
+  --color-btn: var(--btn);
+  --color-btn-text: var(--btn-text);
+  --color-player: var(--player-bg);
+
+  --font-display: var(--font-bricolage), system-ui, sans-serif;
+  --font-sans: var(--font-geist), system-ui, sans-serif;
+
+  --radius-media: 20px;
+  --radius-media-sm: 16px;
+  --radius-field: 28px;
+  --radius-field-sm: 24px;
+  --radius-pill: 999px;
+
+  --shadow-media: var(--media-shadow);
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+
+  /* Type scale (DESIGN.md hierarchy) */
+  /* Fluid in both axes: short laptop screens shrink type as well as narrow ones. */
+  --text-display: clamp(3rem, min(12vw, 17dvh), 11rem);
+  --text-display--line-height: 0.88;
+  --text-display--letter-spacing: -0.045em;
+  --text-headline: clamp(3rem, min(7.2vw, 13dvh), 6.5rem);
+  --text-headline--line-height: 0.9;
+  --text-headline--letter-spacing: -0.04em;
+}
+
+/* Motion durations, used from JS and CSS */
+:root {
+  --dur-micro: 160ms;
+  --dur-ui: 280ms;
+  --dur-cut: 420ms;
+}
+
+html {
+  background: var(--bg);
+  scroll-behavior: smooth;
+  scroll-padding-top: 64px; /* sticky nav height, mobile */
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (min-width: 768px) {
+  html {
+    scroll-padding-top: 76px; /* sticky nav height, desktop */
+  }
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-geist), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.font-display {
+  font-family: var(--font-bricolage), system-ui, sans-serif;
+  font-variation-settings: "opsz" 96;
+}
+
+/* ------------------------------------------------------------------
+   Scrollbars, themed. Chromium and Safari use the ::-webkit-scrollbar
+   rules (standard properties would override them there), Firefox gets
+   the standard scrollbar-color pair.
+   - Page and every scroll area: a chartreuse pill on the page track.
+   - .scroll-rail: native bar hidden; ShortsRail draws its own chartreuse
+     progress bar (phone browsers ignore scrollbar styling).
+   - .scroll-dark: the player, chartreuse on ink.
+   ------------------------------------------------------------------ */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-corner {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--field);
+  border: 3px solid var(--bg);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover,
+::-webkit-scrollbar-thumb:active {
+  background: color-mix(in oklab, var(--field) 82%, var(--field-ink));
+}
+
+.scroll-rail {
+  scrollbar-width: none;
+}
+.scroll-rail::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-dark::-webkit-scrollbar {
+  width: 8px;
+}
+.scroll-dark::-webkit-scrollbar-track,
+.scroll-dark::-webkit-scrollbar-corner {
+  background: var(--player-bg);
+}
+.scroll-dark::-webkit-scrollbar-thumb {
+  background: var(--field);
+  border-color: var(--player-bg);
+}
+
+@supports (-moz-appearance: none) {
+  html {
+    scrollbar-color: var(--field) var(--bg);
+  }
+  .scroll-dark {
+    scrollbar-width: thin;
+    scrollbar-color: var(--field) var(--player-bg);
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--field);
+  color: var(--field-ink);
+}
+
+/* ------------------------------------------------------------------
+   Shared control recipes. Anything you press is a pill.
+   ------------------------------------------------------------------ */
+@layer components {
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    height: 3.5rem;
+    padding-inline: 1.75rem;
+    border-radius: var(--radius-pill);
+    font-weight: 600;
+    font-size: 1.0625rem;
+    white-space: nowrap;
+    cursor: pointer;
+    transition:
+      transform var(--dur-micro) var(--ease-standard),
+      background-color var(--dur-ui) var(--ease-standard),
+      color var(--dur-ui) var(--ease-standard),
+      border-color var(--dur-ui) var(--ease-standard);
+  }
+  .btn:active {
+    transform: scale(0.98);
+  }
+  .btn-sm {
+    height: 2.75rem;
+    padding-inline: 1.125rem;
+    font-size: 0.9375rem;
+  }
+  .btn-primary {
+    background: var(--btn);
+    color: var(--btn-text);
+  }
+  .btn-outline {
+    background: transparent;
+    color: var(--text);
+    box-shadow: inset 0 0 0 1.5px var(--text);
+  }
+  .btn-field {
+    background: var(--field);
+    color: var(--field-ink);
+  }
+  .btn-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: var(--radius-pill);
+    color: var(--text);
+    box-shadow: inset 0 0 0 1px var(--line-strong);
+    cursor: pointer;
+    transition: transform var(--dur-micro) var(--ease-standard);
+  }
+  .btn-icon:active {
+    transform: scale(0.96);
+  }
+  @media (hover: hover) {
+    .btn-primary:hover {
+      background: color-mix(in oklab, var(--btn) 86%, var(--field));
+    }
+    .btn-outline:hover {
+      background: var(--text);
+      color: var(--bg);
+    }
+    .btn-field:hover {
+      background: color-mix(in oklab, var(--field) 88%, var(--field-ink));
+    }
+  }
+  .pill-tag {
+    display: inline-flex;
+    align-items: center;
+    height: 2.5rem;
+    padding-inline: 1.125rem;
+    border-radius: var(--radius-pill);
+    box-shadow: inset 0 0 0 1.5px currentColor;
+    font-weight: 500;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Motion recipes (DESIGN.md). Transform and opacity only, and only
+   when the visitor has not asked for reduced motion.
+   ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes hero-rise {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+  }
+  @keyframes hero-field {
+    from {
+      transform: scale(0.98);
+    }
+  }
+  .hero-rise {
+    animation: hero-rise 0.6s var(--ease-out-expo) both;
+    animation-delay: calc(var(--i, 0) * 60ms);
+  }
+  .hero-field-reveal {
+    animation: hero-field 0.6s var(--ease-out-expo) both;
+  }
+  /* Hidden only after CutIn has mounted (data-armed), so content stays
+     visible if JavaScript never runs. */
+  .cut-in[data-armed] {
+    opacity: 0;
+    transform: scale(0.98);
+    transition:
+      opacity var(--dur-cut) var(--ease-out-expo),
+      transform var(--dur-cut) var(--ease-out-expo);
+  }
+  .cut-in[data-armed].is-in {
+    opacity: 1;
+    transform: none;
+  }
+
+}
+
+/* ------------------------------------------------------------------
+   Reduced motion: collapse every transition and animation.
+   ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
