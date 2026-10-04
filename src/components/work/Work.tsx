@@ -169,7 +169,7 @@ export function Work() {
           )}
           {shorts.length > 0 && (
             <Group id="work-shorts" title="Shorts">
-              <ul role="list" className="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-x-6 gap-y-12 xl:grid-cols-[repeat(auto-fill,minmax(230px,1fr))]">
+              <ul role="list" className="grid grid-cols-[repeat(auto-fill,minmax(180px,1fr))] gap-x-6 gap-y-12 xl:grid-cols-[repeat(auto-fill,minmax(230px,1fr))]">
                 {shorts.map((item) => (
                   <li key={item.id} className="min-w-0">
                     <Card item={item} heading="h4" />
