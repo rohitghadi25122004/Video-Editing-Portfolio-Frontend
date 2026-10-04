@@ -21,7 +21,7 @@ function resolveSiteUrl() {
 
 export const siteUrl = resolveSiteUrl().replace(/\/$/, "");
 
-export const siteTitle = `${profile.name}, ${profile.role}`;
+export const siteTitle = profile.name;
 
 export const siteDescription =
   "Video editor in India for short-form, 3D-style edits, YouTube videos and Instagram Reels. Watch the work and email Vasant Gawade.";
